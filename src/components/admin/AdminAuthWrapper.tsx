@@ -54,12 +54,12 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
     e.preventDefault();
     setErrorMsg("");
 
-    // Accepting pencil@123 as requested. Accept username/email "pencil" or any standard email.
-    if (passwordInput === "pencil@123") {
+    // Restricting access to pencilhubsocial@gmail.com and password pencil@123
+    if (emailInput.trim().toLowerCase() === "pencilhubsocial@gmail.com" && passwordInput === "pencil@123") {
       sessionStorage.setItem("admin_session", "pencil_active");
       setIsAuthenticated(true);
     } else {
-      setErrorMsg("Incorrect credentials. Please verify the password and try again.");
+      setErrorMsg("Incorrect Mail ID or Password. Please try again.");
     }
   };
 
@@ -114,12 +114,12 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
 
             {/* Email Field */}
             <div className="flex flex-col gap-2">
-              <label className="text-[9px] uppercase font-bold tracking-widest text-white/40 font-mono">Mail ID / Username</label>
+              <label className="text-[9px] uppercase font-bold tracking-widest text-white/40 font-mono">Mail ID</label>
               <div className="relative">
                 <input
-                  type="text"
+                  type="email"
                   required
-                  placeholder="admin@pencilhub.in"
+                  placeholder="pencilhubsocial@gmail.com"
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}
