@@ -122,7 +122,7 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
                   placeholder="admin@pencilhub.in"
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-background border border-white/5 focus:outline-none focus:border-accent-blue text-xs text-white"
+                  className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-accent-blue text-xs text-white placeholder-white/30"
                 />
                 <User className="w-4 h-4 text-white/20 absolute left-3 top-3.5" />
               </div>
@@ -138,7 +138,7 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
                   placeholder="••••••••"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-background border border-white/5 focus:outline-none focus:border-accent-blue text-xs text-white"
+                  className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-accent-blue text-xs text-white placeholder-white/30"
                 />
                 <Key className="w-4 h-4 text-white/20 absolute left-3 top-3.5" />
               </div>
