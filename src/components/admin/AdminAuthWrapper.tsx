@@ -119,7 +119,7 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
                 <input
                   type="email"
                   required
-                  placeholder="pencilhubsocial@gmail.com"
+                  placeholder="Enter Mail ID"
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}
