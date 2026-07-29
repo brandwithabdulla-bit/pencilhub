@@ -4,6 +4,8 @@ import { ArrowUpRight, Compass, Shield, Zap, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Magnetic from "@/components/ui/Magnetic";
 
+export const revalidate = 0;
+
 export const metadata = {
   title: "Our Process | How PencilHub Works",
   description: "Learn about our strategic visual design process. We walk you through Discover, Research, Strategy, Design, Development, and Launch phases.",

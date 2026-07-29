@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const revalidate = 0;
+
 export const metadata = {
   title: "Privacy Policy | PencilHub Studio",
   description: "Read how PencilHub handles data privacy, cookies, data storage, and newsletter subscriber information.",

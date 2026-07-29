@@ -57,6 +57,7 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
     // Restricting access to pencilhubsocial@gmail.com and password pencil@123
     if (emailInput.trim().toLowerCase() === "pencilhubsocial@gmail.com" && passwordInput === "pencil@123") {
       sessionStorage.setItem("admin_session", "pencil_active");
+      localStorage.setItem("cms_role", "admin");
       setIsAuthenticated(true);
     } else {
       setErrorMsg("Incorrect Mail ID or Password. Please try again.");
@@ -171,7 +172,7 @@ export default function AdminAuthWrapper({ children }: { children: React.ReactNo
 
   // If authenticated, render standard CMS layout
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white flex">
+    <div className="min-h-screen bg-[#0A0A0A] text-white flex admin-container">
       {/* Sidebar Grid (Width: w-64) */}
       <aside className="w-64 border-r border-white/5 bg-[#111] flex flex-col justify-between p-6 shrink-0 h-screen sticky top-0">
         

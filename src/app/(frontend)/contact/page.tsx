@@ -1,5 +1,7 @@
 import React from "react";
 import { getFAQs, getSettings } from "@/lib/db";
+
+export const revalidate = 0;
 import ContactForm from "@/components/contact/ContactForm";
 import { Mail, Phone, MapPin, Compass, HelpCircle } from "lucide-react";
 

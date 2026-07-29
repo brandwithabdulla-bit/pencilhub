@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const revalidate = 0;
+
 export const metadata = {
   title: "Terms & Conditions | PencilHub Studio",
   description: "Read the rules of engagement, visual intellectual property laws, and client terms of service for working with PencilHub.",
