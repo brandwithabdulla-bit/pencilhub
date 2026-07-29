@@ -6,7 +6,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
 
-export default function CTA() {
+interface CTAProps {
+  settings?: any;
+}
+
+export default function CTA({ settings }: CTAProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -17,7 +21,9 @@ export default function CTA() {
   // Parallax translation for premium feel
   const yButton = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
-  const phrase = "Start a new experience with us!";
+  const phrase = settings?.siteName
+    ? `Start a new experience with ${settings.siteName}!`
+    : "Start a new experience with us!";
 
   return (
     <section 

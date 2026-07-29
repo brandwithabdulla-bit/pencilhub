@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getProjects } from "@/lib/db";
+
+export const revalidate = 0;
 import { ArrowRight, Sparkles, Code2, Film, Video } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
 

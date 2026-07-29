@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getServices } from "@/lib/db";
+
+export const revalidate = 0;
 import * as Icons from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
 

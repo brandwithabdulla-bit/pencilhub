@@ -1,5 +1,7 @@
 import React from "react";
 import { getTeam } from "@/lib/db";
+
+export const revalidate = 0;
 import { Compass, Lightbulb, Target, Heart, Scale, Users } from "lucide-react";
 
 export const metadata = {

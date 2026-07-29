@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getBlogs } from "@/lib/db";
+
+export const revalidate = 0;
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
 
 export const metadata = {

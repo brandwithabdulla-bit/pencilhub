@@ -2,6 +2,8 @@ import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, getProjects } from "@/lib/db";
+
+export const revalidate = 0;
 import { ArrowLeft, Check, Server, Award, Calendar, Users } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
 

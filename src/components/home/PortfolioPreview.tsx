@@ -5,46 +5,22 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const projectsList = [
-  {
-    id: "proj-1",
-    title: "Zenith SaaS Platform",
-    client: "Zenith Tech",
-    slug: "zenith-saas-platform",
-    category: "Web Development",
-    year: "2026",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    id: "proj-2",
-    title: "Aura Cosmetics Suite",
-    client: "Aura Skincare",
-    slug: "aura-cosmetics",
-    category: "Branding",
-    year: "2025",
-    image: "https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    id: "proj-3",
-    title: "Nova Watch Motion Graphic",
-    client: "Nova Watch",
-    slug: "nova-smart-watch",
-    category: "Motion Graphics",
-    year: "2025",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    id: "proj-4",
-    title: "Lumina Brand Edit",
-    client: "Lumina Apparel",
-    slug: "lumina-brand-campaign",
-    category: "Video Editing",
-    year: "2026",
-    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85",
-  },
-];
+interface ProjectItem {
+  id: string;
+  title: string;
+  client: string;
+  slug: string;
+  category: string;
+  year: string;
+  image: string;
+}
 
-export default function PortfolioPreview() {
+export default function PortfolioPreview({ projects }: { projects?: ProjectItem[] }) {
+  // Use first 4 projects from database, fallback to seed mockups if empty
+  const activeProjects = projects && projects.length > 0 ? projects.slice(0, 4) : [];
+
+  if (activeProjects.length === 0) return null;
+
   return (
     <section className="relative py-24 bg-background text-foreground border-t border-card-border transition-colors duration-500">
       
@@ -62,7 +38,7 @@ export default function PortfolioPreview() {
 
         {/* 2x2 Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-          {projectsList.map((project, index) => (
+          {activeProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -83,7 +59,7 @@ export default function PortfolioPreview() {
                   {/* Visual noise filters */}
                   <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/0 transition-colors duration-500 z-10" />
 
-                  {/* Curated Unsplash Portfolio Image */}
+                  {/* Dynamic Portfolio Image */}
                   <motion.div
                     className="w-full h-full bg-cover bg-center"
                     style={{

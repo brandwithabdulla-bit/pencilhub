@@ -5,7 +5,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Play, Sparkles } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
 
-export default function Hero() {
+interface HeroProps {
+  settings?: any;
+}
+
+export default function Hero({ settings }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Parallax and scroll scale binds for premium depth
@@ -19,7 +23,7 @@ export default function Hero() {
   const opacityShowreel = useTransform(scrollYProgress, [0, 0.5], [1, 0.85]);
 
   // Splitting branding letters for staggered character entry
-  const brandWord = "PENCILHUB";
+  const brandWord = (settings?.siteName || "PENCILHUB").toUpperCase();
 
   return (
     <section 
@@ -41,7 +45,7 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
           <Sparkles className="w-3 h-3 text-accent-blue" />
-          <span>LEARN. CREATE. INSPIRE.</span>
+          <span>{settings?.tagline || "LEARN. CREATE. INSPIRE."}</span>
         </motion.div>
 
         {/* Agency Tagline Description */}
@@ -51,7 +55,7 @@ export default function Hero() {
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-xs sm:text-sm md:text-base text-foreground/50 font-sans font-medium max-w-3xl leading-relaxed tracking-wide px-4 text-balance"
         >
-          PencilHub is a premium creative agency helping businesses create memorable brands through{" "}
+          {settings?.siteName || "PencilHub"} is a premium creative agency helping businesses create memorable brands through{" "}
           <span className="text-foreground font-semibold border-b border-card-border pb-0.5 hover:border-foreground transition-colors cursor-default">Branding</span>,{" "}
           <span className="text-foreground font-semibold border-b border-card-border pb-0.5 hover:border-foreground transition-colors cursor-default">Web Design</span>,{" "}
           <span className="text-foreground font-semibold border-b border-card-border pb-0.5 hover:border-foreground transition-colors cursor-default">Website Development</span>,{" "}
@@ -67,7 +71,7 @@ export default function Hero() {
           className="w-full border-t border-b border-card-border py-8 my-6 flex justify-center items-center overflow-hidden select-none"
         >
           <h1 className="font-display text-[11.5vw] font-black tracking-tighter leading-none text-foreground font-extrabold uppercase m-0 p-0 flex">
-            {brandWord.split("").map((letter, index) => (
+            {brandWord.split("").map((letter: string, index: number) => (
               <motion.span
                 key={index}
                 initial={{ opacity: 0, y: 100 }}

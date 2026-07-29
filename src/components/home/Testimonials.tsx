@@ -4,31 +4,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
-const testimonials = [
-  {
-    id: "test-1",
-    name: "Arjun",
-    role: "Founder",
-    company: "Zenith Tech",
-    quote: "PencilHub completely transformed our digital presence. They redesigned our entire platform layout and rebuilt it on Next.js. The results speak for themselves—our conversion metrics increased by 42% within weeks of release.",
-  },
-  {
-    id: "test-2",
-    name: "Priyha",
-    role: "Marketing",
-    company: "Aura Skincare",
-    quote: "The branding packaging design designed by PencilHub is world-class. They captured our luxury, eco-friendly ethos perfectly. Their team works with outstanding attention to detail, and their guidelines are incredibly easy to apply.",
-  },
-  {
-    id: "test-3",
-    name: "Marcus",
-    role: "Product Lead",
-    company: "Nova Labs",
-    quote: "We needed a motion graphic trailer that would stop scrollers on social feeds. PencilHub delivered an absolute masterpiece. Our click-through rates are higher than ever, and our brand authority has reached new levels.",
-  },
-];
+interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+}
 
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: { testimonials?: TestimonialItem[] }) {
+  // Use first 3 testimonials from database
+  const activeTestimonials = testimonials && testimonials.length > 0 ? testimonials.slice(0, 3) : [];
+
+  if (activeTestimonials.length === 0) return null;
+
   return (
     <section className="relative py-24 bg-background text-foreground border-t border-card-border transition-colors duration-500">
       
@@ -46,7 +35,7 @@ export default function Testimonials() {
 
         {/* 3-Column Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-          {testimonials.map((test, index) => (
+          {activeTestimonials.map((test, index) => (
             <motion.div 
               key={test.id} 
               className="flex flex-col justify-between gap-8 relative group"

@@ -2,6 +2,8 @@ import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogBySlug, incrementAnalytics, getBlogs } from "@/lib/db";
+
+export const revalidate = 0;
 import { ArrowLeft, Clock, Calendar, ArrowUpRight } from "lucide-react";
 
 interface Props {
